@@ -14,6 +14,9 @@ import java.util.Optional;
 public class EmployerController {
 
 
+
+
+
     @GetMapping("add")
     public String displayAddEmployerForm(Model model) {
         model.addAttribute(new Employer());
@@ -28,12 +31,17 @@ public class EmployerController {
             return "employers/add";
         }
 
+        // Use the employerRepository to save our newEmployer to the database
+
         return "redirect:";
     }
 
     @GetMapping("view/{employerId}")
     public String displayViewEmployer(Model model, @PathVariable int employerId) {
 
+        // use the findById method of the employerRepository
+        // along with the employerId parameter to get a specific single employer
+        // from the database
         Optional optEmployer = null;
         if (optEmployer.isPresent()) {
             Employer employer = (Employer) optEmployer.get();
